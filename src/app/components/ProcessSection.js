@@ -69,11 +69,11 @@ export default function ProcessSection({
         </p>
       </div>
 
-      {/* ── Main Container: Two Columns ── */}
-      <div className="rounded-2xl sm:rounded-3xl border border-white/10 bg-[#0a0a0c] overflow-hidden shadow-2xl">
-        <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
-          {/* Left Column: 4 Process Steps */}
-          <div className="lg:col-span-5 flex flex-col justify-between divide-y divide-white/10 lg:border-r border-white/10">
+      {/* ── Main Container: Two Columns Managed With Flex ── */}
+      <div className="rounded-2xl sm:rounded-3xl bg-[#0a0a0c] overflow-hidden shadow-2xl">
+        <div className="flex flex-col lg:flex-row items-stretch w-full">
+          {/* Left Column: 4 Process Steps (Flex 5/12 on desktop) */}
+          <div className="w-full lg:w-5/12 flex flex-col justify-between divide-y divide-white/10 border-b lg:border-b-0 lg:border-r border-white/10 shrink-0">
             {PROCESS_STEPS.map((step, idx) => {
               const isActive = activeStep === idx;
               const Icon = step.icon;
@@ -110,19 +110,17 @@ export default function ProcessSection({
                         {step.title}
                       </h3>
 
-                      {/* Animated expandable description */}
+                      {/* Animated expandable description without grid */}
                       <div
-                        className={`grid transition-[grid-template-rows,opacity] duration-400 ease-out overflow-hidden ${
+                        className={`overflow-hidden transition-all duration-400 ease-out ${
                           isActive
-                            ? "grid-rows-[1fr] opacity-100 mt-2.5"
-                            : "grid-rows-[0fr] opacity-0"
+                            ? "max-h-48 opacity-100 mt-2.5"
+                            : "max-h-0 opacity-0"
                         }`}
                       >
-                        <div className="min-h-0">
-                          <p className="font-manrope text-sm text-neutral-400 leading-relaxed max-w-sm">
-                            {step.desc}
-                          </p>
-                        </div>
+                        <p className="font-manrope text-sm text-neutral-400 leading-relaxed max-w-sm">
+                          {step.desc}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -131,8 +129,8 @@ export default function ProcessSection({
             })}
           </div>
 
-          {/* Right Column: /Container.png (Miro Board on Textured Diamond Backdrop) */}
-          <div className="lg:col-span-7 relative min-h-[360px] sm:min-h-[440px] lg:min-h-full overflow-hidden bg-[#070709] group">
+          {/* Right Column: /Container.png (Flex 7/12 on desktop) */}
+          <div className="w-full lg:w-7/12 flex-1 relative min-h-[360px] sm:min-h-[440px] lg:min-h-full overflow-hidden bg-[#070709] group">
             <Image
               src="/Container.png"
               alt="Miro Agile Strategic Architecture Board"

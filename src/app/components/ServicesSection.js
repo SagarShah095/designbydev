@@ -6,71 +6,72 @@ import Image from "next/image";
 const SOLUTIONS = [
   {
     number: "01",
-    title: "Strategic Website Design",
-    desc: "Your website is your 24/7 digital salesperson. We build lightning-fast, mobile optimized platforms engineered to rank high on Google. By blending trust-building design with foundational SEO, we ensure customers find you easily and are naturally guided to reach out.",
+    title: "Brand Strategy & Visual Identity",
+    desc: "We define your core market differentiation, tone of voice, typography, and premium visual aesthetics to position your brand at the top of your industry.",
     image: "/service.png",
   },
   {
     number: "02",
-    title: "Conversion-Focused Landing Pages",
-    desc: "High-velocity sales funnels and campaign landing pages designed with behavioral psychology heuristics, aggressive page speed tuning, and clear conversion paths to maximize your advertising ROI.",
-    image: "/service.png",
+    title: "High-Converting Website Design",
+    desc: "Bespoke digital experiences built from scratch to turn cold visitors into high-paying clients through psychology-backed UI/UX and clear hierarchy.",
+    image: "/services-laptop.jpg",
   },
   {
     number: "03",
-    title: "Brand Identity & Positioning",
-    desc: "A distinctive digital brand presence that commands trust from day one. We craft cohesive visual systems, bespoke typography scales, and strategic positioning assets that make your business instantly recognizable.",
+    title: "Full-Stack Web Development",
+    desc: "Lightning-fast Next.js engineering with rigorous Core Web Vitals optimization, smooth micro-interactions, dynamic CMS integration, and seamless responsiveness.",
     image: "/service.png",
   },
   {
     number: "04",
-    title: "Website Showcase Videos",
-    desc: "Cinematic 3D mockups and product walkthrough motion graphics that highlight your digital platform's premium craftsmanship across social media, pitch decks, and hero headers.",
-    image: "/service.png",
-  },
-  {
-    number: "05",
-    title: "UX Strategy & Audits",
-    desc: "Data-driven heuristic audits and user journey mapping to uncover where visitors drop off. We identify hidden bottlenecks, optimize page flows, and implement immediate UX enhancements that boost overall conversion rates.",
-    image: "/service.png",
+    title: "Conversion Optimization & SEO",
+    desc: "Strategic search engine foundations, technical performance audits, and frictionless conversion funnels engineered to maximize your organic growth and client bookings.",
+    image: "/services-laptop.jpg",
   },
 ];
 
-export default function ServicesSection() {
+export default function ServicesSection({ scrollToSection }) {
   const [openIndex, setOpenIndex] = useState(0);
 
   const toggleSolution = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
+    setOpenIndex(openIndex === index ? -1 : index);
   };
 
   return (
     <section
       id="services"
-      className="py-20 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[#272727]/60 scroll-mt-24"
+      className="py-20 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-24"
     >
-      {/* ── Top Header / Frame 9 ── */}
-      <div className="mb-14 sm:mb-20">
-        {/* Badge: Dot + "Our Solutions" */}
-        <div className="flex items-center gap-2.5 mb-4 sm:mb-6">
-          <span className="w-2 h-2 rounded-full bg-[#ff4d28] shadow-[0_0_12px_#ff4d28]" />
-          <span className="font-manrope text-base text-white font-normal">
-            Our Solutions
-          </span>
+      {/* ── Section Header ── */}
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-8 mb-14 sm:mb-20">
+        <div>
+          {/* Badge: Dot + "Our Capabilities" */}
+          <div className="flex items-center gap-2.5 mb-4 sm:mb-6">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#ff4d28] shadow-[0_0_12px_#ff4d28]" />
+            <span className="font-manrope text-base text-white font-normal">
+              Our Capabilities
+            </span>
+          </div>
+
+          {/* Heading */}
+          <h2 className="font-bricolage text-3xl sm:text-4xl lg:text-[44px] tracking-tight leading-[1.12]">
+            <span className="text-white font-normal">Strategic Design </span>
+            <span className="text-neutral-400 font-normal">&amp; </span>
+            <br className="hidden sm:block" />
+            <span className="text-white font-normal">
+              Scalable Engineering.
+            </span>
+          </h2>
         </div>
 
-        {/* Frame 42: Title & Description */}
-        <div className="max-w-4xl">
-          <h2 className="font-bricolage text-3xl sm:text-4xl lg:text-[44px] text-white font-normal tracking-tight leading-[1.12] mb-4">
-            Everything You Need to Grow Online
-          </h2>
-          <p className="font-manrope text-lg sm:text-xl lg:text-[20px] text-[#c0c0c0] leading-relaxed max-w-2xl">
-            We focus strictly on services that provide a clear return on your
-            investment.
-          </p>
-        </div>
+        {/* Subtitle */}
+        <p className="font-manrope text-base sm:text-lg text-[#c0c0c0] leading-relaxed max-w-md lg:pb-1">
+          Everything your brand needs to stand out, command premium pricing,
+          and convert traffic into committed revenue.
+        </p>
       </div>
 
-      {/* ── Services List / framer-gjqny6 ── */}
+      {/* ── Services List ── */}
       <div className="border-t border-[#272727]">
         {SOLUTIONS.map((item, idx) => {
           const isOpen = openIndex === idx;
@@ -80,53 +81,33 @@ export default function ServicesSection() {
               key={idx}
               className="border-b border-[#272727] transition-colors duration-300"
             >
-              {/* ── Closed Row (Smooth Collapse / Expand) ── */}
-              <div
-                className={`accordion-row ${
-                  isOpen ? "accordion-row-open" : "accordion-row-closed"
-                }`}
+              {/* ── Fixed Header Row (Title & Number NEVER shift position) ── */}
+              <button
+                onClick={() => toggleSolution(idx)}
+                className="w-full text-left py-7 sm:py-8 lg:py-9 flex items-center justify-between gap-6 cursor-pointer group focus:outline-none hover:bg-white/[0.015] transition-colors"
+                aria-expanded={isOpen}
               >
-                <button
-                  onClick={() => toggleSolution(idx)}
-                  className="w-full text-left py-7 sm:py-8 lg:py-9 flex items-center justify-between gap-6 cursor-pointer group focus:outline-none hover:bg-white/[0.015] transition-colors"
-                  aria-expanded={isOpen}
-                >
-                  <span className="font-bricolage text-xl sm:text-2xl lg:text-[30px] text-white font-normal tracking-tight group-hover:translate-x-1 sm:group-hover:translate-x-2 transition-transform duration-300">
-                    {item.title}
-                  </span>
+                <span className="font-bricolage text-xl sm:text-2xl lg:text-[30px] text-white font-normal tracking-tight group-hover:text-neutral-200 transition-colors">
+                  {item.title}
+                </span>
 
-                  <span className="font-aboreto text-lg sm:text-xl lg:text-[20px] text-[#c0c0c0] tracking-[-0.48px] leading-[20px] group-hover:text-white transition-colors">
-                    {item.number}
-                  </span>
-                </button>
-              </div>
+                <span className="font-aboreto text-lg sm:text-xl lg:text-[20px] text-[#c0c0c0] tracking-[-0.48px] leading-[20px] group-hover:text-white transition-colors">
+                  {item.number}
+                </span>
+              </button>
 
-              {/* ── Open State (Smooth Grid Expand / Collapse) ── */}
+              {/* ── Open State (Smooth Grid Expand Below Fixed Title) ── */}
               <div
                 className={`accordion-grid ${
                   isOpen ? "accordion-grid-open" : "accordion-grid-closed"
                 }`}
               >
                 <div className="accordion-inner">
-                  <div className="py-8 sm:py-10 lg:py-12">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-stretch">
-                      {/* Left Column: Title + Number at Top, Body at Bottom */}
-                      <div className="lg:col-span-6 flex flex-col justify-between py-1">
-                        {/* Top: Title and Number */}
-                        <button
-                          onClick={() => toggleSolution(idx)}
-                          className="text-left cursor-pointer group flex items-center gap-4 sm:gap-6 flex-wrap focus:outline-none"
-                        >
-                          <h3 className="font-bricolage text-xl sm:text-2xl lg:text-[30px] text-white font-normal tracking-tight leading-tight group-hover:text-neutral-200 transition-colors">
-                            {item.title}
-                          </h3>
-                          <span className="font-aboreto text-lg sm:text-xl lg:text-[20px] text-[#c0c0c0] tracking-[-0.48px] leading-[20px]">
-                            {item.number}
-                          </span>
-                        </button>
-
-                        {/* Bottom: Paragraph description */}
-                        <p className="font-manrope text-sm sm:text-base text-neutral-400 leading-relaxed max-w-lg mt-8 lg:mt-0">
+                  <div className="pb-8 sm:pb-10 lg:pb-12 pt-1 sm:pt-2">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+                      {/* Left Column: Description paragraph */}
+                      <div className="lg:col-span-6 flex flex-col justify-center">
+                        <p className="font-manrope text-sm sm:text-base text-neutral-400 leading-relaxed max-w-lg">
                           {item.desc}
                         </p>
                       </div>

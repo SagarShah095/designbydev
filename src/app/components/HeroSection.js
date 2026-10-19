@@ -4,16 +4,16 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
 const LOGOS = [
-  { src: "/logos/logo1.png",         alt: "LXA Group" },
-  { src: "/logos/Frame 146.png",     alt: "Monte" },
-  { src: "/logos/Frame 146 (1).png", alt: "Aurelune Café" },
-  { src: "/logos/Link.png",          alt: "Urbanexa" },
-  { src: "/logos/Mask group.png",    alt: "Brand" },
-  { src: "/logos/VEYLO.png",         alt: "Veylo" },
+  { src: "/logos/logo1.png", alt: "LXA Group" },
+  { src: "/logos/frame-146.png", alt: "Monte" },
+  { src: "/logos/frame-146-1.png", alt: "Aurelune Café" },
+  { src: "/logos/Link.png", alt: "Urbanexa" },
+  { src: "/logos/mask-group.png", alt: "Brand" },
+  { src: "/logos/VEYLO.png", alt: "Veylo" },
 ];
 
-// Duplicate array for seamless infinite loop
-const LOGOS_DOUBLED = [...LOGOS, ...LOGOS];
+// Duplicate 4x to ensure uninterrupted, smooth infinite loop on all screen widths
+const LOGOS_REPEATED = [...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS];
 
 export default function HeroSection({ scrollToSection }) {
   return (
@@ -49,12 +49,12 @@ export default function HeroSection({ scrollToSection }) {
 
         {/* ── Hero Content — pinned to bottom-left ── */}
         <div className="relative z-10 flex flex-col justify-end min-h-screen h-[100svh] px-7 sm:px-12 md:px-14 pb-10 sm:pb-14">
-          <div className="max-w-2xl">
-            <h1 className="text-[clamp(2.1rem,5.5vw,4.4rem)] font-bold text-white tracking-tight leading-[1.06] mb-4">
+          <div className="w-full">
+            <h1 className="text-[clamp(2.1rem,5.5vw,4.4rem)] font-[500] text-white tracking-tight leading-[1.06] mb-4">
               Websites Designed to Grow
               <br className="hidden sm:block" /> Your Business.
             </h1>
-            <p className="text-[clamp(0.85rem,1.4vw,1.05rem)] text-neutral-300/85 font-normal leading-relaxed max-w-lg mb-8">
+            <p className="text-[clamp(0.85rem,1.4vw,1.05rem)] text-neutral-300/85 font-normal leading-relaxed max-w-2xl mb-8">
               Stop losing sales to a slow or confusing website. We design fast,
               search-optimized digital platforms that turn visitors into paying
               clients.
@@ -65,7 +65,7 @@ export default function HeroSection({ scrollToSection }) {
             >
               <span>Book a Free Strategy Call</span>
               <span className="w-7 h-7 rounded-full bg-gradient-to-br from-[#ff4d28] to-[#e63010] flex items-center justify-center group-hover:translate-x-0.5 transition-transform shadow-md shadow-[#ff4d28]/40">
-                <ArrowUpRight className="w-3.5 h-3.5 text-white" />
+                <img src="/button-1.svg" alt="" />
               </span>
             </button>
           </div>
@@ -77,8 +77,16 @@ export default function HeroSection({ scrollToSection }) {
             <div className="h-px flex-1 bg-white/[0.06]" />
           </div>
           <div className="marquee-wrapper">
-            <div className="marquee-track" style={{ animationDuration: "22s" }}>
-              {LOGOS_DOUBLED.map((logo, i) => (
+            <div
+              className="marquee-track"
+              style={{
+                display: "flex",
+                width: "max-content",
+                animation: "marquee 26s linear infinite",
+                WebkitAnimation: "marquee 26s linear infinite",
+              }}
+            >
+              {LOGOS_REPEATED.map((logo, i) => (
                 <div
                   key={i}
                   className="flex items-center justify-center px-10 sm:px-14 shrink-0"
@@ -86,7 +94,10 @@ export default function HeroSection({ scrollToSection }) {
                   <img
                     src={logo.src}
                     alt={logo.alt}
-                    className="h-5 sm:h-6 w-auto object-contain opacity-45 hover:opacity-90 transition-all duration-300 hover:scale-105"
+                    loading="eager"
+                    decoding="async"
+                    draggable={false}
+                    className="h-5 sm:h-6 w-auto max-w-none object-contain opacity-45 hover:opacity-90 transition-all duration-300 hover:scale-105"
                     style={{ filter: "brightness(0) invert(1)" }}
                   />
                 </div>
@@ -94,6 +105,30 @@ export default function HeroSection({ scrollToSection }) {
             </div>
           </div>
         </div>
+
+        {/* Guaranteed cross-browser marquee animation styles */}
+        <style jsx global>{`
+          @keyframes marquee {
+            0% {
+              transform: translate3d(0px, 0px, 0px);
+              -webkit-transform: translate3d(0px, 0px, 0px);
+            }
+            100% {
+              transform: translate3d(-50%, 0px, 0px);
+              -webkit-transform: translate3d(-50%, 0px, 0px);
+            }
+          }
+          @-webkit-keyframes marquee {
+            0% {
+              -webkit-transform: translate3d(0px, 0px, 0px);
+              transform: translate3d(0px, 0px, 0px);
+            }
+            100% {
+              -webkit-transform: translate3d(-50%, 0px, 0px);
+              transform: translate3d(-50%, 0px, 0px);
+            }
+          }
+        `}</style>
       </div>
     </section>
   );

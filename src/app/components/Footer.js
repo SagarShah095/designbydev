@@ -23,16 +23,22 @@ export default function Footer({ scrollToSection: controlledScroll }) {
           <div className="md:col-span-6 lg:col-span-5 flex flex-col justify-between">
             <div>
               {/* Brand Logo */}
-              <div className="mb-4">
-                <svg
-                  width="26"
-                  height="26"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="text-black"
-                >
-                  <path d="M4 3.5C4 3.5 8 7 8 12C8 17 4 20.5 4 20.5H8C8 20.5 12 16.5 12 12C12 7.5 8 3.5 8 3.5H4ZM20 3.5C20 3.5 16 7 16 12C16 17 20 20.5 20 20.5H16C16 20.5 12 16.5 12 12C12 7.5 16 3.5 16 3.5H20Z" />
-                </svg>
+              <div className="flex items-center gap-2.5 mb-4">
+                <div className="w-8 h-8 rounded-lg bg-black flex items-center justify-center p-1">
+                  <img
+                    src="/logo.svg"
+                    alt="DesignbyDev"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="flex items-baseline tracking-tight">
+                  <span className="text-xl font-bold text-black leading-none">
+                    Design
+                  </span>
+                  <span className="text-[13px] font-normal text-neutral-700 leading-none ml-0.5">
+                    byDev
+                  </span>
+                </div>
               </div>
 
               {/* Tagline */}

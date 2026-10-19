@@ -27,9 +27,9 @@ export default function Home() {
       <main>
         <HeroSection scrollToSection={scrollToSection} />
         <ProblemSection />
+        <PortfolioSection />
         <ServicesSection scrollToSection={scrollToSection} />
         <ProcessSection />
-        <PortfolioSection />
         <ResultsSection />
         <FaqSection scrollToSection={scrollToSection} />
         <ContactSection />

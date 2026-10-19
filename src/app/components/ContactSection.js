@@ -140,10 +140,10 @@ export default function ContactSection() {
                 <Mail className="w-4 h-4" />
               </div>
               <a
-                href="mailto:hello@dominionstudio.com"
+                href="mailto:hello@designbydev.com"
                 className="hover:text-white transition-colors cursor-pointer"
               >
-                hello@dominionstudio.com
+                hello@designbydev.com
               </a>
             </div>
 

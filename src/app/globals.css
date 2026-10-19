@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Bricolage+Grotesque:opsz,wght@12..96,400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Manrope:wght@200..800&family=Aboreto&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -6,14 +6,35 @@
   --foreground: #ffffff;
   --primary-accent: #ff4d28;
   --primary-gradient: linear-gradient(135deg, #ff4500 0%, #ff6b35 100%);
+  --font-bricolage: 'Bricolage Grotesque', sans-serif;
+  --font-manrope: 'Manrope', sans-serif;
+  --font-arimo: 'Arimo', sans-serif;
+}
+
+html, body, button, input, select, textarea {
+  font-family: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Manrope for ALL paragraphs as requested */
+p, p * {
+  font-family: "Manrope", sans-serif !important;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.font-manrope,
+.nav-tab-manrope {
+  font-family: "Manrope", sans-serif !important;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.font-arimo {
+  font-family: 'Arimo', sans-serif !important;
 }
 
 .font-bricolage {
-  font-family: 'Bricolage Grotesque', sans-serif;
-}
-
-.font-manrope {
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
 }
 
 .font-aboreto {
@@ -23,8 +44,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: monospace;
 }
 
 * {
@@ -39,7 +60,7 @@ html {
 body {
   background-color: #030303;
   color: #ededed;
-  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
   selection-background-color: #ff4d28;
   selection-color: #ffffff;
@@ -144,23 +165,30 @@ textarea:disabled {
 
 /* ── Infinite Logo Marquee ── */
 @keyframes marquee {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 28s linear infinite;
-}
-
-.marquee-track:hover {
-  animation-play-state: paused;
+@-webkit-keyframes marquee {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 .marquee-wrapper {
   overflow: hidden;
-  /* Fade edges */
+  position: relative;
+  width: 100%;
+  max-width: 100%;
   mask-image: linear-gradient(
     to right,
     transparent 0%,
@@ -175,5 +203,20 @@ textarea:disabled {
     black 92%,
     transparent 100%
   );
+}
+
+.marquee-track {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  width: max-content !important;
+  will-change: transform;
+  animation: marquee 24s linear infinite !important;
+  -webkit-animation: marquee 24s linear infinite !important;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused !important;
+  -webkit-animation-play-state: paused !important;
 }
 
