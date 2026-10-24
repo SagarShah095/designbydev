@@ -12,8 +12,8 @@ export default function Navbar({ scrollToSection }) {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-12 pt-4 pb-3 transition-all duration-300">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-[60px] pt-4 pb-3 transition-all duration-300">
+      <div className="mx-auto flex items-center justify-between">
         {/* Brand Logo */}
         <a
           href="#"
@@ -41,7 +41,7 @@ export default function Navbar({ scrollToSection }) {
 
         {/* Center Floating Glass Pill Navbar */}
         <nav
-          className="hidden md:flex items-center gap-1 bg-[#101013]/30 backdrop-blur-sm border border-white/10 rounded-full px-5 py-2 shadow-2xl shadow-black/80 font-manrope"
+          className="hidden md:flex items-center gap-1 bg-[#101013]/30 backdrop-blur-sm border border-white/10 rounded-full px-5 py-2 font-manrope"
           style={{
             fontFamily: '"Manrope", sans-serif',
             fontOpticalSizing: "auto",
@@ -51,9 +51,8 @@ export default function Navbar({ scrollToSection }) {
           {[
             { label: "Problem", id: "problem" },
             { label: "Services", id: "services" },
-            { label: "Process", id: "process" },
             { label: "Work", id: "work" },
-            { label: "Results", id: "results" },
+            { label: "Process", id: "process" },
             { label: "FAQ", id: "faq" },
           ].map(({ label, id }) => (
             <button
@@ -77,7 +76,7 @@ export default function Navbar({ scrollToSection }) {
             onClick={() => handleNav("contact")}
             aria-label="Book a Call"
             title="Book a Call"
-            className="w-11 h-11 sm:w-12 sm:h-12 rounded-full flex bg-[#101013]/30 backdrop-blur-sm border items-center justify-center hover:bg-[#101013]/50 active:scale-95 border-white/15 shadow-lg shadow-black/40 hover:scale-105 transition-all duration-200 group cursor-pointer"
+            className="w-11 h-11 sm:w-[54px] sm:h-[54px] rounded-full flex bg-[#101013]/30 backdrop-blur-sm border items-center justify-center hover:bg-[#101013]/50 active:scale-95 border-white/15 shadow-[5px] shadow-black/10 hover:scale-105 transition-all duration-200 group cursor-pointer"
           >
             <img
               src="/Frame.svg"

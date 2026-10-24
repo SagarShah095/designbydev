@@ -17,24 +17,23 @@ const LOGOS_REPEATED = [...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS];
 
 export default function HeroSection({ scrollToSection }) {
   return (
-    <section className="relative">
+    <section className="relative p-[10px]">
       <div className="relative">
         {/* ── Background Image ── */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/hero-bg.png"
+            src="/website-bg.png"
             alt="Deep warm crimson fluted curtain texture"
             fill
             priority
-            className="object-cover object-center h-screen"
+            className="object-cover rounded-[12px] object-center h-screen"
             style={{ opacity: 0.92 }}
           />
           {/* Bottom fade */}
           <div
             className="absolute inset-0"
             style={{
-              background:
-                "linear-gradient(to top, rgba(5,4,4,0.88) 0%, rgba(5,4,4,0.35) 45%, rgba(5,4,4,0.10) 100%)",
+              background: "",
             }}
           />
           {/* Left vignette */}
@@ -48,24 +47,26 @@ export default function HeroSection({ scrollToSection }) {
         </div>
 
         {/* ── Hero Content — pinned to bottom-left ── */}
-        <div className="relative z-10 flex flex-col justify-end min-h-screen h-[100svh] px-7 sm:px-12 md:px-14 pb-10 sm:pb-14">
+        <div className="relative z-10 flex flex-col justify-end min-h-screen h-[100svh] px-7 sm:px-12 md:px-[80px] pb-10 sm:pb-14">
           <div className="w-full">
-            <h1 className="text-[clamp(2.1rem,5.5vw,4.4rem)] font-[500] text-white tracking-tight leading-[1.06] mb-4">
+            <h1 className="text-[64px] font-[500] text-white tracking-tight leading-[1.06] mb-4">
               Websites Designed to Grow
               <br className="hidden sm:block" /> Your Business.
             </h1>
-            <p className="text-[clamp(0.85rem,1.4vw,1.05rem)] text-neutral-300/85 font-normal leading-relaxed max-w-2xl mb-8">
+            <p className="text-[20px] text-neutral-300/85 font-normal leading-relaxed max-w-2xl mb-8">
               Stop losing sales to a slow or confusing website. We design fast,
               search-optimized digital platforms that turn visitors into paying
               clients.
             </p>
             <button
               onClick={() => scrollToSection("contact")}
-              className="group inline-flex items-center gap-3 bg-white text-[#111] font-semibold text-sm px-5 py-3 rounded-full shadow-xl shadow-black/30 hover:shadow-white/10 hover:scale-[1.02] active:scale-[0.98] transition-all"
+              className="group inline-flex py-[6px] items-center bg-white text-[#111] font-semibold text-sm rounded-full hover:shadow-white/10 hover:scale-[1.02] active:scale-[0.98] transition-all"
             >
-              <span>Book a Free Strategy Call</span>
-              <span className="w-7 h-7 rounded-full bg-gradient-to-br from-[#ff4d28] to-[#e63010] flex items-center justify-center group-hover:translate-x-0.5 transition-transform shadow-md shadow-[#ff4d28]/40">
-                <img src="/button-1.svg" alt="" />
+              <span className="text-[16px]  ml-[20px] mr-[10px]">
+                Book a Free Strategy Call
+              </span>
+              <span className="w-[38px] h-[38px] mr-[6px]  rounded-full bg-gradient-to-br from-[#ff4d28] to-[#e63010] flex items-center justify-center group-hover:translate-x-0.5 transition-transform shadow-md shadow-[#ff4d28]/40">
+                <img src="/button-1.svg" alt="" className="h-[24px] w-[24px]" />
               </span>
             </button>
           </div>
