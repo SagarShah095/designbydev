@@ -59,7 +59,7 @@ export default function Navbar({ scrollToSection }) {
             <button
               key={id}
               onClick={() => handleNav(id)}
-              className="text-xs font-medium text-neutral-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition-colors font-manrope"
+              className="text-[16px] text-neutral-300 hover:text-white px-3 rounded-full py-[6px] hover:bg-white/5 transition-colors font-manrope"
               style={{
                 fontFamily: '"Manrope", sans-serif',
                 fontOpticalSizing: "auto",
